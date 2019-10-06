@@ -1,0 +1,9 @@
+base
+readr
+tuneR
+soundgen
+seewave
+stringr
+lattice
+ggplot2
+caret

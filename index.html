@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Classification of Animal Vocalizations</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="home.html">Home</a>
+</li>
+<li>
+  <a href="index.html">Report</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Classification of Animal Vocalizations</h1>
+
+</div>
+
+
+<p> </p>
+<div id="using-r-to-classify-audio-files." class="section level3">
+<h3>Using R to classify audio files.</h3>
+<p> </p>
+<p>This analysis will use various tools in R to extract data from audio files to do classification. Specifically, predicting whether or not the audio represents a cat meowing or a dog barking. This is meant to serve as a proof of concept, rather than a rigorous ML application.</p>
+<p>One way to analyze sound is to visualize the frequencies on a spectrogram. You can then do a series of analysis to extract relevant sound information.</p>
+<p>Below we have an example of what a cat and a dog vocalization look like on one of those spectrograms.</p>
+<p>Raw data can be found <a href="https://www.kaggle.com/mmoreaux/audio-cats-and-dogs">here</a>.  </p>
+</div>
+<div id="cat-vocalization-spectrogram" class="section level3">
+<h3>Cat Vocalization Spectrogram</h3>
+<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p> </p>
+</div>
+<div id="dog-vocalization-spectrogram" class="section level3">
+<h3>Dog Vocalization Spectrogram</h3>
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="making-predictions-w-acoustic-data" class="section level2">
+<h2>Making Predictions w/ Acoustic Data</h2>
+<p> </p>
+<p>There are two major strategies that you can use when analyzing sound.</p>
+<ol style="list-style-type: decimal">
+<li><p>Extract relevant audio data from a sound file. This can include things like median frequency and pitch.</p></li>
+<li><p>You can also take those visualizations of sound on spectrograms and do machine vision on them. Basically, taking the audio data and representing it visually, and then breaking that data up into pixels for classification.</p></li>
+</ol>
+<p>This post will cover both strategies</p>
+<p> </p>
+</div>
+<div id="extracting-audio-data" class="section level2">
+<h2>Extracting Audio Data</h2>
+<div id="read-train-wav-files-and-analyze" class="section level3">
+<h3>Read Train Wav Files and Analyze</h3>
+<p> </p>
+<p>If you are doing this kind of work, it is likely that you have a folder of sound files. Below you can see one way in which you can reference your different file lists. This for example, sets the pathnames to the training data for both cat and dog vocalizations. After the file paths are set, the analyzeFolder function is used to extract acoustic data from the audio files.</p>
+<pre class="r"><code>### Read wav files
+mydir_cat_train &lt;- &quot;/Users/emily.webber/Dropbox/Website Dropbox 2/Sound2/train/cat&quot;
+mydir_dog_train &lt;- &quot;/Users/emily.webber/Dropbox/Website Dropbox 2/Sound2/train/dog&quot;
+
+#### Cat Files
+fnam=file.path(mydir_cat_train)
+filist=list.files(fnam, recursive=TRUE, pattern=&quot;wav&quot;)
+filist1=paste(fnam, &quot;/&quot;, filist, sep=&quot;&quot;)
+nfiles=length(filist1)
+
+wav_analyze_cat_train &lt;- analyzeFolder(mydir_cat_train)
+
+#### Dog Files
+fnamDOG=file.path(mydir_dog_train)
+filist=list.files(fnam, recursive=TRUE, pattern=&quot;wav&quot;)
+filist1=paste(fnam, &quot;/&quot;, filist, sep=&quot;&quot;)
+nfiles=length(filist1)
+
+wav_analyze_dog_train &lt;- analyzeFolder(mydir_dog_train)</code></pre>
+<p> </p>
+</div>
+<div id="bind-training-data" class="section level3">
+<h3>Bind Training Data</h3>
+<p>After analyzing the cat and dog wav files separately. You simply bind them together to form the training set.</p>
+<pre class="r"><code>wav_analyze_cat_train$group &lt;- &quot;cat&quot;
+wav_analyze_dog_train$group &lt;- &quot;dog&quot;
+train_cat_dog &lt;- rbind(wav_analyze_cat_train, wav_analyze_dog_train)
+
+emptycols &lt;- sapply(train_cat_dog, function (k) all(is.na(k)))
+train_cat_dog &lt;- train_cat_dog[!emptycols]
+train_cat_dog$sound &lt;- as.character(train_cat_dog$sound)
+train_groups &lt;- train_cat_dog$sound
+train_cat_dog$sound &lt;- NULL</code></pre>
+<p> </p>
+</div>
+<div id="modeling-with-gbm" class="section level3">
+<h3>Modeling with GBM</h3>
+<p>You can use any number of algorithms for modeling data. I chose the “gbm” method from the caret library.</p>
+<pre class="r"><code>library(caret)
+set.seed(825)
+gbmFit1 &lt;- train(group ~ ., data = train_cat_dog, 
+                 method = &quot;gbm&quot;, 
+                 verbose = FALSE,
+                 na.action = na.pass)
+gbmFit1</code></pre>
+<p> </p>
+</div>
+<div id="get-test-data" class="section level3">
+<h3>Get Test Data</h3>
+<p>Once your model is trained and you are happy with it, the next step is to import the test data.</p>
+<pre class="r"><code>mydir_cat_test &lt;- &quot;/Users/emily.webber/Dropbox/Website Dropbox 2/Sound2/test/cats&quot;
+mydir_dog_test &lt;- &quot;/Users/emily.webber/Dropbox/Website Dropbox 2/Sound2/test/dogs&quot;
+
+#### Cat Files
+fnam=file.path(mydir_cat_train)
+filist=list.files(fnam, recursive=TRUE, pattern=&quot;wav&quot;)
+filist1=paste(fnam, &quot;/&quot;, filist, sep=&quot;&quot;)
+nfiles=length(filist1)
+
+#### Dog Files
+fnam=file.path(mydir_dog_test)
+filist=list.files(fnam, recursive=TRUE, pattern=&quot;wav&quot;)
+filist1=paste(fnam, &quot;/&quot;, filist, sep=&quot;&quot;)
+nfiles=length(filist1)</code></pre>
+<p> </p>
+</div>
+<div id="analyze-and-bind-test-data" class="section level3">
+<h3>Analyze and Bind Test Data</h3>
+<p>You analyze and bind the test data in the same way you did the train data.</p>
+<pre class="r"><code>wav_analyze_cat_test&lt;- analyzeFolder(mydir_cat_test)
+
+wav_analyze_dog_test &lt;- analyzeFolder(mydir_dog_test)</code></pre>
+<pre class="r"><code>### Bind training files together
+
+test_cat_dog &lt;- rbind(wav_analyze_cat_test, wav_analyze_dog_test)
+
+emptycols &lt;- sapply(test_cat_dog, function (k) all(is.na(k)))
+test_cat_dog &lt;- test_cat_dog[!emptycols]
+test_cat_dog$sound &lt;- as.character(test_cat_dog$sound)
+testing_groups &lt;- test_cat_dog$sound 
+test_cat_dog$sound &lt;- NULL</code></pre>
+<p> </p>
+</div>
+<div id="make-predictions-w-acoustic-data" class="section level3">
+<h3>Make Predictions w/ Acoustic Data</h3>
+<p>Now you can input your test dataset into the model that you built to generate predictions! Below you can see the code and summary of the results. You can see that our gbm model did a pretty good job!</p>
+<pre class="r"><code>### Preditions
+pred &lt;- predict(gbmFit1, test_cat_dog)
+
+testing_groups &lt;- as.data.frame(testing_groups)
+testing_groups$pred &lt;- pred
+
+testing_groups$actual &lt;- substr(testing_groups$testing_groups, start = 1, stop = 3)
+testing_groups$actual &lt;- as.factor(testing_groups$actual)
+
+confusionMatrix(testing_groups$actual, testing_groups$pred)</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction cat dog
+##        cat  37   2
+##        dog   4  24
+##                                           
+##                Accuracy : 0.9104          
+##                  95% CI : (0.8152, 0.9664)
+##     No Information Rate : 0.6119          
+##     P-Value [Acc &gt; NIR] : 3.902e-08       
+##                                           
+##                   Kappa : 0.8141          
+##                                           
+##  Mcnemar&#39;s Test P-Value : 0.6831          
+##                                           
+##             Sensitivity : 0.9024          
+##             Specificity : 0.9231          
+##          Pos Pred Value : 0.9487          
+##          Neg Pred Value : 0.8571          
+##              Prevalence : 0.6119          
+##          Detection Rate : 0.5522          
+##    Detection Prevalence : 0.5821          
+##       Balanced Accuracy : 0.9128          
+##                                           
+##        &#39;Positive&#39; Class : cat             
+## </code></pre>
+<p> </p>
+</div>
+</div>
+<div id="classification-of-sepctral-image-data" class="section level2">
+<h2>Classification of sepctral image data:</h2>
+<p>The last section covered how to classify sound using analysis of an audio file with soundgen. This next section will focus on visualizing the sound data on a spectrogram, and then using those images in classification.</p>
+<p> </p>
+<div id="creating-spectrograms" class="section level3">
+<h3>Creating Spectrograms</h3>
+<p>In order to get started, you need to create spectrograms for all of your training and test files. Only run this once. I commented out the code so that it would not rerun every time I knit this markdown file.</p>
+<pre class="r"><code>#spectrogramFolder(mydir_cat_train, htmlPlots = TRUE, verbose = TRUE, step = NULL, overlap = 50, wn = &quot;gaussian&quot;,
+     #             zp = 0, ylim = NULL, osc = TRUE, xlab = &quot;Time, ms&quot;,
+      #            ylab = &quot;kHz&quot;, width = 900, height = 500, units = &quot;px&quot;,
+       #           res = NA)
+
+#spectrogramFolder(mydir_dog_train, htmlPlots = TRUE, verbose = TRUE, step = NULL, overlap = 50, wn = &quot;gaussian&quot;,
+ #                 zp = 0, ylim = NULL, osc = TRUE, xlab = &quot;Time, ms&quot;,
+  #                ylab = &quot;kHz&quot;, width = 900, height = 500, units = &quot;px&quot;,
+   #               res = NA)
+
+
+#spectrogramFolder(mydir_cat_test, htmlPlots = TRUE, verbose = TRUE, step = NULL, overlap = 50, wn = &quot;gaussian&quot;,
+#                  zp = 0, ylim = NULL, osc = TRUE, xlab = &quot;Time, ms&quot;,
+ #                 ylab = &quot;kHz&quot;, width = 900, height = 500, units = &quot;px&quot;,
+  #                res = NA)
+
+#spectrogramFolder(mydir_dog_test, htmlPlots = TRUE, verbose = TRUE, step = NULL, overlap = 50, wn = &quot;gaussian&quot;,
+ #                 zp = 0, ylim = NULL, osc = TRUE, xlab = &quot;Time, ms&quot;,
+  #                ylab = &quot;kHz&quot;, width = 900, height = 500, units = &quot;px&quot;,
+   #               res = NA)</code></pre>
+<p> </p>
+</div>
+<div id="load-packages-and-file-paths" class="section level3">
+<h3>Load Packages and file paths:</h3>
+<p>This is similar to the last set-up.</p>
+<pre class="r"><code>library(pbapply)
+library(magick)</code></pre>
+<pre><code>## Linking to ImageMagick 6.9.9.39
+## Enabled features: cairo, fontconfig, freetype, lcms, pango, rsvg, webp
+## Disabled features: fftw, ghostscript, x11</code></pre>
+<pre class="r"><code>library(EBImage)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;EBImage&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:tuneR&#39;:
+## 
+##     channel</code></pre>
+<pre class="r"><code>width &lt;- 28
+height &lt;- 28
+img_size &lt;- width*height
+
+mydir_test_spec &lt;- &quot;/Users/emily.webber/Dropbox/Website Dropbox 2/Sound2/test/test_specs&quot;
+mydir_train_spec &lt;- &quot;/Users/emily.webber/Dropbox/Website Dropbox 2/Sound2/train/train_spec&quot;</code></pre>
+<p> </p>
+</div>
+<div id="create-extract-feature-function" class="section level3">
+<h3>Create extract feature function:</h3>
+<p>This is a function that uses the file paths to process images. Images are read, resized, changed to grayscale and put into a matrix (tabular data) with this function. This is essentially going to take the image files, processes them and extract pixel information. <a href="https://rstudio-pubs-static.s3.amazonaws.com/236125_e0423e328e4b437888423d3821626d92.html">function credit</a></p>
+<pre class="r"><code>extract_feature &lt;- function(dir_path, width, height, is_cat = TRUE, add_label = TRUE) {
+  img_size &lt;- width*height
+  ## List images in path
+  images_names &lt;- list.files(dir_path)
+  if (add_label) {
+    ## Select only cats or dogs images
+    images_names &lt;- images_names[grepl(ifelse(is_cat, &quot;cat&quot;, &quot;dog&quot;), images_names)]
+    ## Set label, cat = 0, dog = 1
+    label &lt;- ifelse(is_cat, 0, 1)
+  }
+  print(paste(&quot;Start processing&quot;, length(images_names), &quot;images&quot;))
+  ## This function will resize an image, turn it into greyscale
+  feature_list &lt;- pblapply(images_names, function(imgname) {
+    ## Read image
+    img &lt;- readImage(file.path(dir_path, imgname))
+    ## Resize image
+    img_resized &lt;- resize(img, w = width, h = height)
+    ## Set to grayscale
+    grayimg &lt;- channel(img_resized, &quot;gray&quot;)
+    ## Get the image as a matrix
+    img_matrix &lt;- grayimg@.Data
+    ## Coerce to a vector
+    img_vector &lt;- as.vector(t(img_matrix))
+    return(img_vector)
+  })
+
+  
+  ## bind the list of vector into matrix
+  feature_matrix &lt;- do.call(rbind, feature_list)
+  feature_matrix &lt;- as.data.frame(feature_matrix)
+  ## Set names
+  names(feature_matrix) &lt;- paste0(&quot;pixel&quot;, c(1:img_size))
+  if (add_label) {
+    ## Add label
+    feature_matrix &lt;- cbind(label = label, feature_matrix)
+  }
+  return(feature_matrix)
+}</code></pre>
+<p> </p>
+</div>
+<div id="extract-and-save-image-data" class="section level3">
+<h3>Extract and save image data</h3>
+<p>The next step is to apply the function to the training and testing datasets.</p>
+<pre class="r"><code>cats_data &lt;- extract_feature(dir_path = mydir_train_spec, width = width, height = height)</code></pre>
+<pre><code>## [1] &quot;Start processing 125 images&quot;</code></pre>
+<pre class="r"><code>dogs_data &lt;- extract_feature(dir_path = mydir_train_spec, width = width, height = height, is_cat = FALSE)</code></pre>
+<pre><code>## [1] &quot;Start processing 85 images&quot;</code></pre>
+<pre class="r"><code>cats_data_test &lt;- extract_feature(dir_path = mydir_test_spec, width = width, height = height)</code></pre>
+<pre><code>## [1] &quot;Start processing 39 images&quot;</code></pre>
+<pre class="r"><code>dogs_data_test&lt;- extract_feature(dir_path = mydir_test_spec, width = width, height = height, is_cat = FALSE)</code></pre>
+<pre><code>## [1] &quot;Start processing 28 images&quot;</code></pre>
+<pre class="r"><code>saveRDS(cats_data, &quot;cat.rds&quot;)
+saveRDS(dogs_data, &quot;dog.rds&quot;)
+
+saveRDS(cats_data_test, &quot;cat.rds&quot;)
+saveRDS(dogs_data_test, &quot;dog.rds&quot;)</code></pre>
+<p> </p>
+</div>
+<div id="an-example-of-a-cat-and-dog-spectrogram-using-the-function-above" class="section level3">
+<h3>An example of a Cat and Dog spectrogram using the function above:</h3>
+<p> </p>
+<p><strong>Cat</strong></p>
+<pre class="r"><code>knitr::include_graphics(&quot;/Users/emily.webber/Dropbox/Website Dropbox 2/Sound2/test/cats_spec/cat_129.png&quot;)</code></pre>
+<p><img src="test/cats_spec/cat_129.png" width="450" /></p>
+<p> </p>
+<p><strong>Dog</strong></p>
+<pre class="r"><code>knitr::include_graphics(&quot;//Users/emily.webber/Dropbox/Website Dropbox 2/Sound2/test/dogs_spec/dog_barking_99.png&quot;)</code></pre>
+<p><img src="test/dogs_spec/dog_barking_99.png" width="450" /></p>
+<p> </p>
+</div>
+<div id="bind-train-data-and-test-data-together" class="section level3">
+<h3>Bind train data and test data together</h3>
+<p>Bind the cats and dogs data within the training and testing datasets.</p>
+<pre class="r"><code>## Bind rows in a single dataset
+train_set &lt;- rbind(cats_data, dogs_data)
+test_set &lt;- rbind(cats_data_test, dogs_data_test)
+
+#write.csv(test_set, file = &quot;test.csv&quot;)
+#write.csv(train_set, file = &quot;train.csv&quot;)</code></pre>
+<p> </p>
+</div>
+<div id="fit-same-model-used-for-spectral-data-from-wave-forms" class="section level3">
+<h3>Fit same model used for spectral data from wave forms</h3>
+<p>This section fits the same type of model used for the acoustic wav form data.</p>
+<pre class="r"><code>set.seed(825)
+gbmFit_image &lt;- train(label ~ ., data = train_set, 
+                 method = &quot;gbm&quot;, 
+                 verbose = FALSE,
+                 na.action = na.pass)
+gbmFit_image</code></pre>
+<pre><code>## Stochastic Gradient Boosting 
+## 
+## 210 samples
+## 784 predictors
+## 
+## No pre-processing
+## Resampling: Bootstrapped (25 reps) 
+## Summary of sample sizes: 210, 210, 210, 210, 210, 210, ... 
+## Resampling results across tuning parameters:
+## 
+##   interaction.depth  n.trees  RMSE       Rsquared   MAE       
+##   1                   50      0.1742041  0.8767061  0.08694624
+##   1                  100      0.1773871  0.8706470  0.09359096
+##   1                  150      0.1791563  0.8680945  0.09860695
+##   2                   50      0.1763691  0.8715315  0.08528835
+##   2                  100      0.1781513  0.8685479  0.09245553
+##   2                  150      0.1786531  0.8675912  0.09538868
+##   3                   50      0.1755923  0.8717695  0.08440902
+##   3                  100      0.1766826  0.8701327  0.08899663
+##   3                  150      0.1770438  0.8695573  0.09190784
+## 
+## Tuning parameter &#39;shrinkage&#39; was held constant at a value of 0.1
+## 
+## Tuning parameter &#39;n.minobsinnode&#39; was held constant at a value of 10
+## RMSE was used to select the optimal model using the smallest value.
+## The final values used for the model were n.trees = 50, interaction.depth
+##  = 1, shrinkage = 0.1 and n.minobsinnode = 10.</code></pre>
+<p> </p>
+</div>
+<div id="prepare-test-set-for-predictions" class="section level3">
+<h3>Prepare test set for predictions</h3>
+<p>Reserve the label from the test set and save it to another variable.</p>
+<pre class="r"><code>### Preditions
+image_scores &lt;- test_set$label
+image_scores2 &lt;- unlist(image_scores)
+image_scores2 &lt;-as.data.frame(image_scores2)
+test_set$label &lt;- NULL</code></pre>
+<p> </p>
+</div>
+<div id="make-predictions-on-test-set" class="section level3">
+<h3>Make predictions on test set</h3>
+<p>The final step is to run the model on the test data. The results are then converted to categories using the threshold of 0.5 and compared to the actual labels.</p>
+<pre class="r"><code>pred_image &lt;- predict(gbmFit_image, test_set)
+
+image_scores2$pred &lt;- pred_image
+image_scores2$predicted[image_scores2$pred &gt;= 0.5] &lt;- &quot;cat&quot;
+image_scores2$predicted[image_scores2$pred &lt; 0.5] &lt;- &quot;dog&quot;
+image_scores2$actual[image_scores2$image_scores2 == &#39;1&#39;] &lt;- &quot;cat&quot;
+image_scores2$actual[image_scores2$image_scores2 == &#39;0&#39;] &lt;- &quot;dog&quot;
+image_scores2$actual &lt;- as.factor(image_scores2$actual)
+image_scores2$predicted &lt;- as.factor(image_scores2$predicted)
+
+confusionMatrix(image_scores2$actual, image_scores2$predicted)</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction cat dog
+##        cat  28   0
+##        dog   1  38
+##                                           
+##                Accuracy : 0.9851          
+##                  95% CI : (0.9196, 0.9996)
+##     No Information Rate : 0.5672          
+##     P-Value [Acc &gt; NIR] : 1.643e-15       
+##                                           
+##                   Kappa : 0.9695          
+##                                           
+##  Mcnemar&#39;s Test P-Value : 1               
+##                                           
+##             Sensitivity : 0.9655          
+##             Specificity : 1.0000          
+##          Pos Pred Value : 1.0000          
+##          Neg Pred Value : 0.9744          
+##              Prevalence : 0.4328          
+##          Detection Rate : 0.4179          
+##    Detection Prevalence : 0.4179          
+##       Balanced Accuracy : 0.9828          
+##                                           
+##        &#39;Positive&#39; Class : cat             
+## </code></pre>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-91308049-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+<!-- Go to www.addthis.com/dashboard to customize your tools --> <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-589036a8549be1ce"></script>
+
+
+
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
